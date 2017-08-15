@@ -1,0 +1,26 @@
+<?php
+$datatype_arr={"text"=>"varchar(255)","number"=>"bigint",
+"radio"=>"varchar(255)","email"=>"varchar(255)"};
+
+$a="CREATE TABLE db".$id."(";
+//button is clicked
+$a=$a.$name." ".$datatype." ".$constraints.", ";
+$a=$a.")";
+?>
+
+<div class="form">
+	<input type="button" onclick="genesis()" name="genesis">
+</div>
+
+<div class="form" id="current_state">
+	<!--
+	This form must be in the middle
+	-->
+</div>
+
+
+<script type="text/javascript">
+	function genesis() {
+		$("#current_state").append("<br/>name db_dataype constraints");
+	}
+</script>

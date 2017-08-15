@@ -4,5 +4,5 @@
 <div class="jumbotron">
 	&nbsp;You can create your forms here
 </div>
-<a href="/create">&nbsp;Create</a>
+<a href="/feedback/create">&nbsp;Create</a>
 @endsection

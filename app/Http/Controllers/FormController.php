@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Form;
+use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 class FormController extends Controller
 {
     /**
@@ -24,7 +27,6 @@ class FormController extends Controller
      */
     public function create()
     {
-        //$fm=new Form;
         return view('form.create');
     }
 
@@ -36,7 +38,54 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
+        $num=Form::max('id');
+        $num++;
+        $total="";
+        $total="create table db".$num."(";
+        $new="";
+        $name=Auth::user();
+        if (strlen($name)<1) {
+            $name="guest";
+        }
+        $date=date('y-m-d');
         //
+        $req=$request->all();
+        foreach ($req as $re)
+        {
+            $re=stripslashes($re);
+            $re=htmlspecialchars($re);
+            $re=trim($re);
+            if ($re!="Save")
+            {
+                //
+                if(strpos($re, '_')===(strlen($re)-1))
+                {
+                    $new=$re." varchar(255),";
+                    $total=$total.$new;
+                }
+                else
+                {
+                    //$new=$re." varchar(50) ";
+                    $total=$total."";
+                }
+            }
+        }
+        if (strlen($total)<31) {
+        		$num=-3;
+            return view('form.store',
+                ['name'=>$name,'date'=>$date,'num'=>$num]);
+        }
+        else
+        {
+	        $total=$total." tbid int DEFAULT ".$num.")";
+	        DB::insert('insert into forms values('.$num.', \'db'.$num.'\', \''.$name.'\', \''.$date.'\', \''.$date.'\')');
+	        DB::statement($total);
+	        return view('form.store', [
+	                'name'=>$name,
+	                'date'=>$date,
+	                'num'=>$num
+	            ]);
+     		}
     }
 
     /**
@@ -49,7 +98,18 @@ class FormController extends Controller
     {
         $p=new Form;
         $f=$p->find($id);
-        return view('form.show', compact('f'));
+        try
+        {
+            $dbname="db".$id;
+            //
+            return view('form.show', [
+                    'f'=>$f
+                ]);
+        }
+        catch(Exception $e)
+        {
+            return view('error');
+        }
     }
 
     /**

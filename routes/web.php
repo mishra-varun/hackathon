@@ -1,23 +1,17 @@
 <?php
 
-Route::get('/laravel', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/feedback', 'FormController@index');
 Route::get('/feedback/create', 'FormController@create');
-
-
+Route::post('/feedback/store', 'FormController@store');
+Route::get('/feedback/store', 'MainController@error');
 //keep {id} files last
 Route::get('/feedback/{id}', 'FormController@show');
 /**
 *
-/ => welcome
-/create => create new
-/form => latest forms
-/form/{id} => latest
-/login
-/register
-/home => profile-name/designation/department
+/portfolio
 *
 */
 Auth::routes();
