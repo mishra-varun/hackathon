@@ -48,7 +48,7 @@
 		var txt=prompt("Add a name for the Text field");
 		if (txt.length>0)
 		{
-			$("#main-form").append("<div> "+txt+": &nbsp; <input type=\"text\" name=\""+txt+"\" value=\""+txt+"_\">"+"</div>");
+			$("#main-form").append("<div class=\"well well-sm\"> "+txt+": &nbsp; <input type=\"hidden\" name=\""+txt+"\" value=\""+txt+"_\">"+"</div>");
 		}
 		else
 		{

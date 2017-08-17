@@ -9,6 +9,7 @@ Route::post('/feedback/store', 'FormController@store');
 Route::get('/feedback/store', 'MainController@error');
 //keep {id} files last
 Route::get('/feedback/{id}', 'FormController@show');
+Route::get('/feedback/{id}/result','ResultController@show');
 /**
 *
 /portfolio

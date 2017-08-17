@@ -47,8 +47,7 @@ class FormController extends Controller
         if (strlen($name)<1) {
             $name="guest";
         }
-        $date=date('y-m-d');
-        //
+        $date=date('y-m-d')." ".date('h:m:s');
         $req=$request->all();
         foreach ($req as $re)
         {
@@ -79,6 +78,15 @@ class FormController extends Controller
         {
 	        $total=$total." tbid int DEFAULT ".$num.")";
 	        DB::insert('insert into forms values('.$num.', \'db'.$num.'\', \''.$name.'\', \''.$date.'\', \''.$date.'\')');
+            DB::statement('create table db'.$num.'st (colname varchar(255))');
+            $req=$request->all();
+            foreach ($req as $key)
+            {
+                if (strpos($key, '_')===(strlen($key)-1))
+                {
+                    DB::insert('insert into db'.$num.'st (colname) values (\''.$key.'\')');
+                }
+            }
 	        DB::statement($total);
 	        return view('form.store', [
 	                'name'=>$name,
@@ -96,17 +104,22 @@ class FormController extends Controller
      */
     public function show($id)
     {
-        $p=new Form;
-        $f=$p->find($id);
-        try
+        $max=Form::max('id');
+        if (($id<=$max)&&($id!=1))
         {
+            
+            $p=new Form;
+            $col=DB::table('db'.$id.'st')->pluck('colname');
+            $f=$p->find($id);
             $dbname="db".$id;
-            //
+            $db=DB::table($dbname)->get();
             return view('form.show', [
-                    'f'=>$f
+                    'f'=>$f,
+                    'db'=>$db,
+                    'col'=>$col
                 ]);
         }
-        catch(Exception $e)
+        else
         {
             return view('error');
         }
