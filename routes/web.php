@@ -10,15 +10,13 @@ Route::get('/feedback/store', 'MainController@error');
 //keep {id} files last
 Route::get('/feedback/{id}', 'FormController@show');
 Route::get('/feedback/{id}/result','ResultController@show');
-/**
-*
-/portfolio
-*
-*/
+Route::post('/fill','ResultController@fill');
+Route::get('/fill', 'MainController@error');
+
+Route::get('/report', 'MainController@pdf');
 Auth::routes();
 
 Route::get('/profile', 'HomeController@index')->name('home');
-
 
 
 //error page

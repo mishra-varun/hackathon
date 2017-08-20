@@ -10,6 +10,10 @@ class MainController extends Controller
     {
     	return view('error');
     }
+    public function pdf()
+    {
+    	return view('pdf');
+    }
     public function index()
     {
     	return view('index');

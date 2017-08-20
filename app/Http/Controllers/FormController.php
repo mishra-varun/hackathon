@@ -17,7 +17,9 @@ class FormController extends Controller
      */
     public function index()
     {
-        return view('form.index');
+        $maxn=Form::max('id');
+        $fm=DB::table('forms')->latest()->get();
+        return view('form.index', ['fm'=>$fm,'max'=>$maxn]);
     }
 
     /**
@@ -59,7 +61,7 @@ class FormController extends Controller
                 //
                 if(strpos($re, '_')===(strlen($re)-1))
                 {
-                    $new=$re." varchar(255),";
+                    $new="`".$re."` varchar(255),";
                     $total=$total.$new;
                 }
                 else
@@ -84,7 +86,8 @@ class FormController extends Controller
             {
                 if (strpos($key, '_')===(strlen($key)-1))
                 {
-                    DB::insert('insert into db'.$num.'st (colname) values (\''.$key.'\')');
+                    //$key="'".$key."'";
+                    DB::insert("insert into db".$num."st values ('".$key."')");
                 }
             }
 	        DB::statement($total);

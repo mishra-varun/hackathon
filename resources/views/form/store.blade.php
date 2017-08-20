@@ -10,7 +10,7 @@ $url="/feedback/".$num;
 	Your feedback form was successfully created
 </div>
 <div class="alert alert-primary">
-	Created by user <b>{{ $name }}</b> on <b>{{ $date }}</b>
+	Created by user <b>{{ $name }}</b> on <b>{{ $date }} (GMT)</b>
 </div>
 <div class="alert alert-primary">
 	You can access your form <a href="{{ $url }}">here</a>
