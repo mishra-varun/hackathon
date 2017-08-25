@@ -13,7 +13,10 @@ Route::get('/feedback/{id}/result','ResultController@show');
 Route::post('/fill','ResultController@fill');
 Route::get('/fill', 'MainController@error');
 
+Route::post('/report/{id}', 'MainController@generate');
+Route::get('/report/{id}', 'MainController@show');
 Route::get('/report', 'MainController@pdf');
+
 Auth::routes();
 
 Route::get('/profile', 'HomeController@index')->name('home');
