@@ -2,12 +2,9 @@
 
 @section('content')
 <!--Add if condition here for users not logged in-->
-
+@if(!(Auth::check()))
 <div class="alert alert-info">
 	&nbsp;Create your forms here
-</div>
-<div class="alert alert-warning">
-	&nbsp;Avoid using keywords like varchar, int, Save, create, insert, delete etc.
 </div>
 
 <div class="form" id="create-btn">
@@ -62,10 +59,10 @@
 	}
 </script>
 
-
+@else
 <div class="jumbotron">
 	You must login to create forms
 </div>
-
+@endif
 
 @endsection

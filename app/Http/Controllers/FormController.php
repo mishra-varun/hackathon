@@ -15,6 +15,10 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
     public function index()
     {
         $maxn=Form::max('id');

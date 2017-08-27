@@ -1,30 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Notice;
+
 use Illuminate\Http\Request;
+use App\Report;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-class MainController extends Controller
+class ReportController extends Controller
 {
-	public function error()
+    public function create()
 	{
-		return view('error');
-	}
-	public function pdf()
-	{
-		$path=Notice::max('id');
+		$path=Report::max('id');
 		$path++;
-		return view('notice',compact('path'));
+		return view('report.create',compact('path'));
 	}
 	public function generate(Request $request)
 	{
-		$notice=new Notice;
+		$notice=new Report;
 		$name=Auth::user();
 		if (strlen($name)<1) {
 			$name="Guest";
-		}
+		}/*
 		$notice=Notice::create([
 				'created_by'=>$name,
 				'title'=>request('title'),
@@ -40,21 +37,17 @@ class MainController extends Controller
 			]);
 		$notice->save();
 		$id=Notice::max('id');
-		$view=Notice::find($id);
-		return view('generate', ['view'=>$view]);
+		$view=Notice::find($id);*/
+		return view('report.generate', ['view'=>$view]);
 	}
 	public function show($id)
 	{
-		$max=Notice::max('id');
+		$max=Report::max('id');
 		if ($id<=$max) {
 			$view=Notice::find($id);
-			return view('generate', ['view'=>$view]);
+			return view('report.generate', ['view'=>$view]);
 		}
 		else
 			return view('error');
-	}
-	public function index()
-	{
-		return view('index');
 	}
 }

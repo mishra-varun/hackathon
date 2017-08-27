@@ -2889,7 +2889,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "jk"
-                },
+                }
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",

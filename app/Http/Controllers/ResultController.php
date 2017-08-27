@@ -44,4 +44,16 @@ class ResultController extends Controller
     DB::insert($total);
     return view('form.fill');
   }
+  public function analysis($id)
+  {
+    $cols=DB::table('db'.$id.'st')->pluck('colname');
+    $data= array();
+    foreach ($cols as $key) {
+      $data[]=DB::table('db'.$id)->pluck($key);
+    }
+    return view('form.analysis', [
+        'cols'=>$cols,
+        'data'=>$data
+      ]);
+  }
 }
