@@ -28,7 +28,7 @@
 </head>
 <body onload="window.print()">
 <img src="{{ asset('images/logo.jpg') }}">
-<br/>
+<br/><br/>
 <span id="title">
 	{{ $view->title }}<br/>
 	{{ $view->subtitle }}
