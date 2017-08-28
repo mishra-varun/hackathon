@@ -13,12 +13,12 @@ Route::get('/feedback/{id}/result','ResultController@analysis');
 Route::post('/fill','ResultController@fill');
 Route::get('/fill', 'MainController@error');
 
-Route::post('/notice/{id}', 'MainController@generate');
 Route::get('/notice/{id}', 'MainController@show');
+Route::post('/notice/{id}', 'MainController@generate');
 Route::get('/notice', 'MainController@pdf');
 
-Route::post('/report/{id}', 'ReportController@generate');
 Route::get('/report/{id}', 'ReportController@show');
+Route::post('/report/{id}', 'ReportController@generate');
 Route::get('/report', 'ReportController@create');
 
 Auth::routes();

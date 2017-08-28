@@ -14,6 +14,18 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet'>
     <style>
+    body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
      body {
       font-family: 'Actor';font-size: 16px;
       }
@@ -79,6 +91,11 @@
     <div class="row" style="text-align: center;">
       <form method="POST" action="{{ $action }}">
         {{ csrf_field() }}
+        @if($errors->any())
+          <div class="alert alert-danger">
+            All the fields are required
+          </div>
+        @endif
         <div class="col sm-6">
             Title: <input type="text" name="title"><hr/>
         </div>
@@ -112,10 +129,13 @@
             </div>
             Copy to<hr/><textarea name="copy_to"></textarea>
             
+        </div><div class="container">
+          If you are on mobile or don't have any printing device attatched, Chrome allows to save the notice in PDF format
         </div>
         <div class="col sm-6">
             <input type="submit" value="Generate" class="btn btn-success btn-lg"><hr/>
         </div>
+        
       </form>
     </div>
     

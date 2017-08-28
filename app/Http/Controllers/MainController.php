@@ -20,6 +20,18 @@ class MainController extends Controller
 	}
 	public function generate(Request $request)
 	{
+		$this->validate($request,[
+				'title'=>'required|bail',
+				'subtitle'=>'required',
+				'subject'=>'required',
+				'ref_num'=>'required',
+				'date'=>'required',
+				'to'=>'required',
+				'body'=>'required',
+				'creator_name'=>'required',
+				'designation'=>'required',
+				'copy_to'=>'required'
+			]);
 		$notice=new Notice;
 		$name=Auth::user();
 		if (strlen($name)<1) {

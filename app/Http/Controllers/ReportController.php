@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Report;
+//use App\Report;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,13 +11,14 @@ class ReportController extends Controller
 {
     public function create()
 	{
-		$path=Report::max('id');
+		//$path=Report::max('id');
+		$path=1;
 		$path++;
 		return view('report.create',compact('path'));
 	}
 	public function generate(Request $request)
 	{
-		$notice=new Report;
+		//$notice=new Report;
 		$name=Auth::user();
 		if (strlen($name)<1) {
 			$name="Guest";
@@ -38,7 +39,7 @@ class ReportController extends Controller
 		$notice->save();
 		$id=Notice::max('id');
 		$view=Notice::find($id);*/
-		return view('report.generate', ['view'=>$view]);
+		return view('report.generate', ['view'=>2]);
 	}
 	public function show($id)
 	{

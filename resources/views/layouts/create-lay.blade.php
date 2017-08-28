@@ -14,6 +14,18 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet'>
     <style>
+    body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
      body {
      font-family: 'Actor';font-size: 16px;
     }
