@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
     public function create()
 	{
 		$path=Report::max('id');
@@ -17,6 +21,14 @@ class ReportController extends Controller
 	}
 	public function generate(Request $request)
 	{
+		$this->validate($request,[
+				'title'=>'required|bail',
+				'date'=>'required|bail',
+				'subtitle'=>'required|bail',
+				'intro'=>'required|bail',
+				'body'=>'required|bail',
+				'conc'=>'required'
+			]);
 		$report=new Report;
 		$name=Auth::user();
 		if (strlen($name)<1) {

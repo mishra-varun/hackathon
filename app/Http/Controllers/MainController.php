@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
-	public function error()
+	public function __construct()
 	{
-		return view('error');
+		$this->middleware('auth');
 	}
 	public function pdf()
 	{

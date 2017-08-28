@@ -13,6 +13,11 @@ $action="/report/".$path;
 <div class="container">
   <form action="{{ $action }}" method="post">
   {{ csrf_field() }}
+  @if($errors->any())
+  	<div class="alert alert-danger">
+  		All fields are required
+  	</div>
+  @endif
 	<div class="row">
 		<div class="col-sm-5">
 			Title<input type="text" name="title">

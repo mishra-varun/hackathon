@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ResultController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
   public function show($id)
   {
   	$mx=Form::max('id');
