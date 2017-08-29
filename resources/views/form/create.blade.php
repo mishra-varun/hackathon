@@ -2,7 +2,7 @@
 
 @section('content')
 <!--Add if condition here for users not logged in-->
-@if(!(Auth::check()))
+@if(Auth::check())
 <div class="alert alert-info">
 	&nbsp;Create your forms here
 </div>
@@ -51,7 +51,6 @@
 		{
 			alert("The name cannot be empty");
 		}
-		//TODO => proper js for appending
 	}
 	
 	function rst() {

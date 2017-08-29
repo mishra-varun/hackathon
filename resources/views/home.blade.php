@@ -8,21 +8,25 @@
           <div class="panel-heading">Dashboard</div>
 
             <div class="panel-body">
-              Welcome {{ Auth::user() }}<hr/>
-              <ul class="list-group">
-					      <li class="list-group-item">
-					       Latest Forms </li>
-					       <li style="color: white;background-color: black" class="list-group-item">
-					       Create a Form </li>
-								 <li class="list-group-item">
-					       Latest notices</li>
-					       <li style="color: white;background-color: black" class="list-group-item">
-					       Create a notice</li>
+              Welcome {{ Auth::user()->name }}<hr/>
+              <ul style="border-style: solid;border-radius: 6px" class="list-group">
+					      <li style="border-bottom: 3px;" class="list-group-item">
+					       <a href="/feedback">
+					       	Latest Forms
+					       </a></li>
 					       <li class="list-group-item">
-					       Latest reports</li>
-					       <li style="color: white;background-color: black" class="list-group-item">
-					       Create a report</li>
-					       </ul>
+					        <a href="/feedback/create">
+					       	Create a Form
+					       </a></li>
+							<li class="list-group-item">
+					       <a href="/notice">
+					       	Create a notice
+					       </a></li>
+					       <li class="list-group-item">
+					       <a href="/report">
+					       	Create a report
+					       </a></li>
+			</ul>
            </div>
         </div>
     </div>

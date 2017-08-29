@@ -27,9 +27,9 @@ Route::get('/profile', 'HomeController@index')->name('home');
 
 
 //error page
-Route::get('/{error}', 'MainController@error');
-Route::get('/{error}/{error1}', 'MainController@error');
-Route::get('/{error}/{error1}/{error2}', 'MainController@error');
-Route::post('/{error}', 'MainController@error');
-Route::post('/{error}/{error1}', 'MainController@error');
-Route::post('/{error}/{error1}/{error2}', 'MainController@error');
+Route::get('/{error}', 'ActivityController@index');
+Route::get('/{error}/{error1}', 'ActivityController@index');
+Route::get('/{error}/{error1}/{error2}', 'ActivityController@index');
+Route::post('/{error}', 'ActivityController@index');
+Route::post('/{error}/{error1}', 'ActivityController@index');
+Route::post('/{error}/{error1}/{error2}', 'ActivityController@index');
