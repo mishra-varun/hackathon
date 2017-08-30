@@ -8,12 +8,12 @@
 </div>
 <div class="container">
 
-<div class="alert alert-info">
+<div class="alert alert-success">
 	Total number of responses : {{ $depth }}
 </div>
 <ul class="list-group">
 	@for($d=0;$d<$depth;$d++)
-	<div class="alert alert-success">Response {{ ($d+1) }}</div>
+	<li class="list-group-item active">Response {{ ($d+1) }}</li>
 	@for($w=0;$w<$width;$w++)
 		<li class="list-group-item">
 		<b>{{ strrev(substr(strrev($cols[$w]),1)) }}</b>
