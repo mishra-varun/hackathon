@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if(!(Auth::check()))
+@if(Auth::check())
 <div class="jumbotron">
 	<div class="col-sm-1"> </div><h3> Results</h3>
 </div>
@@ -10,23 +10,18 @@
 <?php
 $count=0;
 ?>
-<table class="table table-bordered table-condensed">
+
+<table class="table table-bordered">
 	<tr class="success">
-	@foreach($cols as $col)
-		<td>{{ strrev(substr(strrev($col),1)) }}</td>
-	@endforeach
-	</tr>
-	@foreach($data as $dt)
+		@foreach($data as $d)
 		@php
-			$count++;
+		$count++;
 		@endphp
-		<tr>
-			@foreach($dt as $d)
-				<td>{{ $d }}</td>	
-			@endforeach
-		</tr>
-	@endforeach
+		<td>{{ $cols[$count-1] }}</td>
+		@endforeach
+	</tr>
 </table>
+
 <div class="alert alert-info">
 	Total number of responses : {{ $count }}
 </div>

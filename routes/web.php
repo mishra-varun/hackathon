@@ -6,12 +6,12 @@ Route::get('/', function () {
 Route::get('/feedback', 'FormController@index');
 Route::get('/feedback/create', 'FormController@create');
 Route::post('/feedback/store', 'FormController@store');
-Route::get('/feedback/store', 'MainController@error');
+Route::get('/feedback/store', 'ActivityController@index');
 //keep {id} files last
 Route::get('/feedback/{id}', 'FormController@show');
 Route::get('/feedback/{id}/result','ResultController@analysis');
 Route::post('/fill','ResultController@fill');
-Route::get('/fill', 'MainController@error');
+Route::get('/fill', 'ActivityController@index');
 
 Route::get('/notice/{id}', 'MainController@show');
 Route::post('/notice/{id}', 'MainController@generate');
