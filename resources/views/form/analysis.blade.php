@@ -3,30 +3,26 @@
 @section('content')
 
 @if(Auth::check())
-<div class="jumbotron">
-	<div class="col-sm-1"> </div><h3> Results</h3>
+<div class="well well-sm">
+	<div class="col-sm-1">&nbsp;</div><h4>Results</h4>
 </div>
 <div class="container">
-<?php
-$count=0;
-?>
-
-<table class="table table-bordered">
-	<tr class="success">
-		@foreach($data as $d)
-		@php
-		$count++;
-		@endphp
-		<td>{{ $cols[$count-1] }}</td>
-		@endforeach
-	</tr>
-</table>
 
 <div class="alert alert-info">
-	Total number of responses : {{ $count }}
+	Total number of responses : {{ $depth }}
 </div>
-</div>
+<ul class="list-group">
+	@for($d=0;$d<$depth;$d++)
+	<div class="alert alert-success">Response {{ ($d+1) }}</div>
+	@for($w=0;$w<$width;$w++)
+		<li class="list-group-item">
+		<b>{{ strrev(substr(strrev($cols[$w]),1)) }}</b>
+		- {{ $data[$w][$d] }}</li>
+	@endfor
+	@endfor
+</ul>
 
+</div>
 @else
 <div class="well well-lg">
 	You must login to create forms

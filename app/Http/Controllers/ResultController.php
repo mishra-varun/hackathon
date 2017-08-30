@@ -52,12 +52,20 @@ class ResultController extends Controller
   {
     $cols=DB::table('db'.$id.'st')->pluck('colname');
     $data= array();
+    $depth=0;
+    $width=0;
     foreach ($cols as $key) {
       $data[]=DB::table('db'.$id)->pluck($key);
+      $width++;
+    }
+    foreach ($data[0] as $d) {
+      $depth++;
     }
     return view('form.analysis', [
         'cols'=>$cols,
-        'data'=>$data
+        'data'=>$data,
+        'depth'=>$depth,
+        'width'=>$width
       ]);
   }
 }

@@ -4,6 +4,7 @@
 
 <?php
 $url="/feedback/".$num;
+$res=$url."/result";
 ?>
 @if($num>=0)
 <div class="alert alert-success">
@@ -13,7 +14,7 @@ $url="/feedback/".$num;
 	Created by user <b>{{ $name->name }}</b> on <b>{{ $date }} (GMT)</b>
 </div>
 <div class="alert alert-primary">
-	You can access your form <a href="{{ $url }}">here</a>
+	You can access your form <a href="{{ $url }}">here</a> and the it's results <a href="{{ $res }}">here</a>.
 </div>
 
 @else
