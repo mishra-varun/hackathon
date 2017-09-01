@@ -13,6 +13,14 @@ class ReportController extends Controller
 	{
 		$this->middleware('auth');
 	}
+	public function latest()
+	{
+		$latest=Report::all();
+		if (count($latest)==0) {
+			$latest=0;
+		}
+		return view('report.latest', compact('latest'));
+	}
     public function create()
 	{
 		$path=Report::max('id');

@@ -12,6 +12,14 @@ class MainController extends Controller
 	{
 		$this->middleware('auth');
 	}
+	public function ln()
+	{
+		$latest=Notice::all();
+		if (count($latest)==0) {
+			$latest=0;
+		}
+		return view('latest', compact('latest'));
+	}
 	public function pdf()
 	{
 		$path=Notice::max('id');
