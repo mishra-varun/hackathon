@@ -27,7 +27,7 @@
 	<title>Generate a report</title>
 </head>
 <body onload="window.print()">
-<img src="{{ asset('images/logo.jpg') }}">
+<img src="img/logo.jpg">
 <br/><br/>
 <span id="title">
 	{{ $view->title }}<br/>

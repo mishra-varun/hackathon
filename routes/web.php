@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::get('/feedback', 'FormController@index');
 Route::get('/feedback/create', 'FormController@create');

@@ -29,7 +29,7 @@
 	</style>
 </head>
 <body onload="window.print()">
-		<img src="/images/logo.jpg"><br/>
+		<img src="/img/logo.jpg"><br/>
 		<div id="title"><br/>
 			{{ $view->title }}
 		<br/>
