@@ -20,6 +20,7 @@
     body {
         font-family: 'Raleway', sans-serif;
         font-weight: bold;
+        color: #fff;
 </style>
 </head>
 <body>
@@ -32,20 +33,36 @@
             <li class="sidebar-brand">
                 <a href="#top" onclick=$("#menu-close").click();>Activity Hub</a>
             </li>
+            @if (Route::has('login'))
+            @if(Auth::check())
+            <li>
+            <a href="/profile" onclick=$("#menu-close").click();>Profile</a>
+            </li>
+            <li>
+             <a href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+            </li>
+            @else
+            <li>
+                <a href="/register" onclick=$("#menu-close").click();>Sign up</a>
+            </li>
+            <li>
+                <a href="/login" onclick=$("#menu-close").click();>Login</a>
+            </li>
+            @endif
+            @endif
             <li>
                 <a href="#top" onclick=$("#menu-close").click();>Home</a>
             </li>
             <li>
                 <a href="#about" onclick=$("#menu-close").click();>About</a>
             </li>
+            
             <li>
-                <a href="#services" onclick=$("#menu-close").click();>Services</a>
-            </li>
-            <li>
-                <a href="#portfolio" onclick=$("#menu-close").click();>Portfolio</a>
-            </li>
-            <li>
-                <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
+                <a href="#contact" onclick=$("#menu-close").click();>Contact The Admins</a>
             </li>
         </ul>
     </nav>
@@ -54,18 +71,18 @@
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h1>Activity Hub</h1>
-            <h3>The hub for TCET activities. </h3>
+            <h3><b>The hub for TCET activities.</b></h3>
             <br>
             <a href="#about" class="btn btn-dark btn-lg">Start</a>
         </div>
     </header>
 
     <!-- About -->
-    <section style="background-color: #EE6123" id="about" class="about">
+   <section style="background-color: #EE6123;color: black" id="about" class="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-           <h2>Features <span class="glyphicon glyphicon-chevron-right"></span></h2>
+           <h2><b>Features </b><span class="glyphicon glyphicon-chevron-right"></span></h2>
             <p class="lead">Reports, notices and feedback</p>
                 </div>
             </div>
@@ -73,7 +90,6 @@
         </div>
         <!-- /.container -->
     </section>
-<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
     <section id="services" class="services bg-primary">
         <div class="container">
             <div class="row text-center">
@@ -142,22 +158,21 @@
             </div>
         </div>
     </aside>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                    </form>
     <footer>
-        <div class="container">
+        <div id="contact" class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Contact</strong>
+                    <h4><p style="color: #EE6123"><b>Contact</b></p>
                     </h4>
                    
                     <br>
                     <ul class="list-inline">
                         <li>
-                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                            <a href="mailto:mishravarun61@gmail.com"><span style="font-size: 40px;" class="glyphicon glyphicon-envelope"></span></a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                        </li>
-                       
                     </ul>
                     <hr class="small">
                     <p class="text-muted">Copyright &copy;2017</p>
